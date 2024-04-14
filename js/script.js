@@ -35,13 +35,14 @@ window.onscroll = function(){
 //hapus notif sukses
   function removeSukses(){
     var sukses = document.getElementById("notif-sukses");
-    sukses.remove();
+    sukses.classList.toggle('hidden')
+    
   }
 
 //   hapus notif error
   function removeError(){
     var gagal = document.getElementById("notif-gagal");
-    gagal.remove();
+    gagal.classList.toggle('hidden')
   }
 
 // form contact
