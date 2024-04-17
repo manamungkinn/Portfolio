@@ -20,7 +20,7 @@ function notif(){
     alert('Heheh blm ada bg')   
 }
 
-// Navbar fix
+// Navbar fixed
 window.onscroll = function(){
     const header = document.querySelector('header')
     const fixedNav = header.offsetTop;
@@ -35,11 +35,10 @@ window.onscroll = function(){
 //hapus notif sukses
   function removeSukses(){
     var sukses = document.getElementById("notif-sukses");
-    sukses.classList.toggle('hidden')
-    
+    sukses.classList.toggle('hidden');  
   }
 
-//   hapus notif error
+//hapus notif error
   function removeError(){
     var gagal = document.getElementById("notif-gagal");
     gagal.classList.toggle('hidden')
@@ -62,7 +61,9 @@ window.onscroll = function(){
       // munculkan loading
       loading.classList.toggle('hidden');
       btnKirim.classList.toggle('hidden');
-
+      notifSukses.classList.add('hidden')
+      notifGagal.classList.add('hidden')
+      
         // Mendapatkan nilai dari input
         var formData = new FormData(form);
         var name = formData.get('nama');
@@ -82,7 +83,7 @@ window.onscroll = function(){
         .then(response =>{
           loading.classList.toggle('hidden');
           btnKirim.classList.toggle('hidden');
-          notifSukses.classList.toggle('hidden')
+          notifSukses.classList.toggle('hidden');
           form.reset()
         })
       
@@ -90,7 +91,7 @@ window.onscroll = function(){
           loading.classList.toggle('hidden');
           btnKirim.classList.toggle('hidden');
           notifGagal.classList.toggle('hidden')
-          console.log(error)
+          console.log(error);
           form.reset()
         })
     })
