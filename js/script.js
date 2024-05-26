@@ -5,16 +5,27 @@ const navMenu = document.querySelector('#nav-menu')
 hamburger.addEventListener('click',function(){
     hamburger.classList.toggle('hamburger-active');
     navMenu.classList.toggle("hidden");
+    navMenu.classList.add("dark:bg-dark","dark:shadow-slate-500")
+    
 })
 
+//buat ngembalikan hamburger ketika diklik diluar hamburger
 document.addEventListener('click', function(event) {
     const isClickInsideMenu = navMenu.contains(event.target) || hamburger.contains(event.target);
     if (!isClickInsideMenu && !navMenu.classList.contains('hidden')) {
-      navMenu.classList.add('hidden');
+    navMenu.classList.add('hidden');
     hamburger.classList.toggle('hamburger-active');
-
     }
   });
+
+//atau bisa juga
+// window.addEventListener('click',function(e){
+//   if(e.target != navMenu && e.target != hamburger){
+//     hamburger.classList.toggle('hamburger-active');
+//     navMenu.classList.toggle("hidden");
+//   }
+// });
+
 
 function notif(){
     alert('Heheh blm ada bg')   
@@ -24,12 +35,48 @@ function notif(){
 window.onscroll = function(){
     const header = document.querySelector('header')
     const fixedNav = header.offsetTop;
+    const scroll = document.querySelector('#scroll')
+    const nav = document.querySelector("#nav-menu")
 
     if(window.pageYOffset > fixedNav){
-        header.classList.add('navbar-fixed')
+        header.classList.add('navbar-fixed');
+        scroll.classList.remove('hidden')
+        scroll.classList.add('flex');
+        nav.classList.add('navHam')
     } else{
-        header.classList.remove('navbar-fixed')
+        header.classList.remove('navbar-fixed');
+        scroll.classList.add('hidden');
+        scroll.classList.add('flex');
+        nav.classList.remove('navHam')
     }
+}
+
+//scroll ke atas
+function back(){
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+
+//darkmode
+const dark = document.querySelector('#dark-toggle');
+const html = document.querySelector('html');
+
+dark.addEventListener('click',function(e){
+  if(dark.checked){
+    html.classList.add('dark');
+    localStorage.theme ='dark'
+  }
+  else if(!dark.checked){
+      html.classList.remove('dark');
+      localStorage.theme ='Gak dark '
+    }
+})
+
+//posisi toggle buat darkmode kalo refresh
+if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+  dark.checked = true;
+} else {
+  dark.checked = false;
 }
 
 //hapus notif sukses
@@ -94,4 +141,4 @@ window.onscroll = function(){
           console.log(error);
           form.reset()
         })
-    })
+    });
