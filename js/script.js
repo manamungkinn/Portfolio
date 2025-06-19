@@ -3,7 +3,7 @@ const hamburger = document.querySelector('#hamburger');
 const navMenu = document.querySelector('#nav-menu')
 
 hamburger.addEventListener('click',function(){
-    hamburger.classList.toggle('hamburger-active');
+    hamburger.classList.toggle('hamburger-');
     navMenu.classList.toggle("hidden");
     navMenu.classList.add("dark:bg-dark","dark:shadow-slate-500")
     
@@ -20,15 +20,18 @@ document.addEventListener('click', function(event) {
 
 //atau bisa juga
 // window.addEventListener('click',function(e){
-//   if(e.target != navMenu && e.target != hamburger){
+//   if(e.targ  et != navMenu && e.target != hamburger){
 //     hamburger.classList.toggle('hamburger-active');
 //     navMenu.classList.toggle("hidden");
 //   }
 // });
 
 
-function notif(){
-    alert('Heheh blm ada bg')   
+function web1(){
+    location.href = 'https://project-nime.vercel.app/';
+}
+function web2(){
+    location.href = 'https://roy-cleaner.vercel.app/';
 }
 
 // Navbar fixed
